@@ -1,0 +1,61 @@
+{
+  "entities": {
+    "Project": {
+      "title": "Project",
+      "description": "A top-level project container.",
+      "type": "object",
+      "properties": {
+        "name": { "type": "string", "description": "Name of the project" },
+        "description": { "type": "string", "description": "Project description" },
+        "ownerId": { "type": "string", "description": "UID of the project owner" },
+        "members": { "type": "array", "items": { "type": "string" }, "description": "List of member UIDs" },
+        "createdAt": { "type": "string", "format": "date-time", "description": "Creation timestamp" }
+      },
+      "required": ["name", "ownerId"]
+    },
+    "Task": {
+      "title": "Task",
+      "description": "A specific task within a project.",
+      "type": "object",
+      "properties": {
+        "projectId": { "type": "string", "description": "ID of the parent project" },
+        "title": { "type": "string", "description": "Task title" },
+        "description": { "type": "string", "description": "Task description" },
+        "status": { "type": "string", "enum": ["todo", "in-progress", "completed"], "description": "Current status" },
+        "deadline": { "type": "string", "format": "date-time", "description": "Task deadline" },
+        "assignedTo": { "type": "string", "description": "UID of the assigned employee" },
+        "desiredResult": { "type": "number", "description": "Target metric value" },
+        "actualResult": { "type": "number", "description": "Achieved metric value" },
+        "metricName": { "type": "string", "description": "Name of the metric being measured (e.g., Sales, Units)" },
+        "createdAt": { "type": "string", "format": "date-time", "description": "Creation timestamp" }
+      },
+      "required": ["projectId", "title", "status"]
+    },
+    "User": {
+      "title": "User",
+      "description": "User profile information.",
+      "type": "object",
+      "properties": {
+        "email": { "type": "string", "format": "email", "description": "User email" },
+        "displayName": { "type": "string", "description": "User display name" },
+        "photoURL": { "type": "string", "description": "User profile photo URL" },
+        "role": { "type": "string", "enum": ["manager", "employee"], "description": "User role" }
+      },
+      "required": ["email"]
+    }
+  },
+  "firestore": {
+    "/projects/{projectId}": {
+      "schema": "Project",
+      "description": "Top-level projects"
+    },
+    "/tasks/{taskId}": {
+      "schema": "Task",
+      "description": "Tasks across all projects"
+    },
+    "/users/{userId}": {
+      "schema": "User",
+      "description": "User profiles"
+    }
+  }
+}
