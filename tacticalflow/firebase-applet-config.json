@@ -1,0 +1,10 @@
+{
+  "projectId": "buildathon-ai",
+  "appId": "1:1089107249454:web:13d590695cf8bc32e092bf",
+  "apiKey": "AIzaSyB9RMB-ODzyUIwpy-OzMXnfuN_xVvVoRv0",
+  "authDomain": "buildathon-ai.firebaseapp.com",
+  "firestoreDatabaseId": "ai-studio-f2815403-a889-4700-b932-d2c4fa3a2594",
+  "storageBucket": "buildathon-ai.firebasestorage.app",
+  "messagingSenderId": "1089107249454",
+  "measurementId": ""
+}
